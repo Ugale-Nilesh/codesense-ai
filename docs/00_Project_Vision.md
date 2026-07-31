@@ -269,6 +269,48 @@ It explains:
 - How to prevent it
 - How the implementation can be improved
 - What can be learned from it
+  
+---
+
+# Minimum Viable Product (MVP)
+
+The first production-ready version of CodeSense AI focuses on solving one problem exceptionally well:
+
+> Help developers debug, understand, and improve code using AI.
+
+The MVP will include the following capabilities:
+
+- AI-powered error analysis
+- Screenshot-based debugging
+- Project-level code analysis
+- AI code review
+- Performance suggestions
+- Human-readable explanations
+- AI-generated reports
+- Modern dashboard interface
+- GitHub repository support
+
+The MVP intentionally limits its scope to ensure high quality, fast development, and a successful exhibition demonstration.
+
+The objective is to deliver one polished developer experience rather than many partially implemented features.
+
+---
+
+# Out of Scope (Version 1)
+
+The following capabilities are intentionally excluded from Version 1:
+
+- AI pair programming
+- Mobile applications
+- Team collaboration
+- CI/CD integrations
+- IDE plugins
+- Infrastructure analysis
+- Automated deployments
+- Multi-user workspaces
+- Enterprise administration
+
+These features may be considered in future releases after the MVP has been successfully completed.
 
 ---
 
