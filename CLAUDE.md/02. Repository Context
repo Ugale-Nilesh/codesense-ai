@@ -1,0 +1,310 @@
+# 02. Repository Context
+
+## Purpose
+
+Before implementing any feature, modifying any file, or making any engineering decision, develop a complete understanding of the repository.
+
+Never begin implementation immediately after receiving a request.
+
+Instead, understand the current state of the project first.
+
+The repository is the single source of truth for implementation.
+
+---
+
+# Repository Overview
+
+The repository is organized into independent but connected areas.
+
+Each directory has a specific responsibility.
+
+Never mix responsibilities between directories.
+
+---
+
+## Root Directory
+
+The project root contains the overall project structure.
+
+Example:
+
+```text
+codesense-ai/
+
+backend/
+frontend/
+docs/
+tasks/
+
+README.md
+CLAUDE.md
+```
+
+The root directory defines the entire software project.
+
+No implementation files should be created here unless they belong at the project root.
+
+---
+
+# Backend
+
+Location
+
+```
+backend/
+```
+
+Purpose
+
+Contains the complete server-side application.
+
+Responsibilities include:
+
+- Business logic
+- REST API
+- Authentication
+- AI orchestration
+- Database
+- GitHub integration
+- File analysis
+- Background jobs
+- Services
+- Models
+
+All backend code must remain inside this directory.
+
+Frontend code must never appear here.
+
+---
+
+# Frontend
+
+Location
+
+```
+frontend/
+```
+
+Purpose
+
+Contains the complete client-side application.
+
+Responsibilities include:
+
+- User Interface
+- Dashboards
+- Authentication Pages
+- Project Explorer
+- AI Chat
+- Code Review UI
+- Settings
+- API Communication
+
+Backend implementation must never exist inside the frontend.
+
+---
+
+# Documentation
+
+Location
+
+```
+docs/
+```
+
+Purpose
+
+Contains the permanent knowledge of the project.
+
+Examples include:
+
+- Project Vision
+- Product Requirements
+- System Architecture
+- Technology Stack
+- Folder Structure
+- Database Design
+- Coding Standards
+- Development Rules
+
+Documentation defines the intended system.
+
+Implementation should follow the documentation whenever possible.
+
+---
+
+# Tasks
+
+Location
+
+```
+tasks/
+```
+
+Purpose
+
+Contains implementation specifications.
+
+Tasks describe:
+
+- objectives
+- implementation steps
+- acceptance criteria
+- verification
+- completion conditions
+
+Tasks explain WHAT should be implemented.
+
+They do not redefine project architecture.
+
+---
+
+# CLAUDE.md
+
+Purpose
+
+This file defines your operating procedures.
+
+It explains:
+
+- how to think
+- how to work
+- how to navigate the project
+- how to make engineering decisions
+
+This document defines your behaviour.
+
+It does not define product requirements.
+
+---
+
+# README.md
+
+Purpose
+
+The README introduces the repository to developers.
+
+It is intended for humans joining the project.
+
+It should remain synchronized with the current state of development.
+
+---
+
+# Repository Responsibilities
+
+Every directory has a single responsibility.
+
+Never place files into unrelated directories.
+
+Maintain clear separation of concerns.
+
+When uncertain about file placement, follow the documented folder structure.
+
+---
+
+# Source of Truth
+
+When multiple files discuss the same topic, follow this priority.
+
+Highest Priority
+
+1. CLAUDE.md
+
+2. docs/
+
+3. tasks/
+
+4. Existing implementation
+
+5. User request
+
+If conflicts exist:
+
+- Prefer documentation over assumptions.
+- Prefer architecture over convenience.
+- Request clarification when documentation conflicts.
+
+---
+
+# Repository Navigation Strategy
+
+Before implementing any feature:
+
+1. Read CLAUDE.md.
+
+2. Read relevant documentation.
+
+3. Read the roadmap.
+
+4. Locate the implementation task.
+
+5. Inspect existing code.
+
+6. Understand dependencies.
+
+7. Begin implementation.
+
+Never skip repository analysis.
+
+---
+
+# Repository Integrity
+
+Preserve consistency throughout the project.
+
+Avoid:
+
+- duplicate folders
+- duplicate utilities
+- duplicate implementations
+- duplicate documentation
+
+When improvements are possible:
+
+- reuse existing code
+- extend existing modules
+- avoid unnecessary creation of new abstractions
+
+---
+
+# Architectural Respect
+
+The repository structure represents architectural decisions.
+
+Do not:
+
+- rename folders
+- reorganize modules
+- relocate implementations
+
+unless explicitly instructed.
+
+Architecture changes require user approval.
+
+---
+
+# Repository Awareness
+
+Always maintain awareness of:
+
+- current implementation phase
+- completed tasks
+- active modules
+- pending work
+- project roadmap
+
+Never work in isolation from the overall project.
+
+Every implementation should fit naturally into the existing repository.
+
+---
+
+# Final Principle
+
+Before writing code, understand the repository.
+
+Before modifying code, understand the module.
+
+Before creating new code, determine whether suitable functionality already exists.
+
+The first responsibility of a professional engineer is understanding the system before changing it.
