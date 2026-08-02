@@ -22,50 +22,70 @@ Every technology is selected using four principles:
 
 # Technology Overview
 
+This table reflects the finalized, single-source-of-truth technology stack. All other documents in this repository must remain consistent with it.
+
   ---------------------------------------------------------------------------
   Layer                Technology                          Why
   -------------------- ----------------------------------- ------------------
-  Frontend             Next.js (React + TypeScript)        Modern SSR,
-                                                           routing, ecosystem
+  Frontend             React + Vite + TypeScript            Fast dev server,
+                                                           SPA simplicity,
+                                                           strong ecosystem
 
-  UI                   Tailwind CSS + shadcn/ui            Fast, accessible
-                                                           UI
+  UI                   Tailwind CSS                         Fast, utility-
+                                                           first styling
+
+  Routing              React Router                         Standard SPA
+                                                           routing
+
+  Server State          TanStack Query                      Caching, sync,
+                                                           and fetching for
+                                                           server data
+
+  Client State           Zustand                             Lightweight
+                                                           global state
 
   Editor               Monaco Editor                       VS Code-like
                                                            editing experience
 
-  Backend              NestJS                              Modular,
-                                                           enterprise-ready
-                                                           APIs
-
-  AI Service           Python (FastAPI)                    Best AI/ML
-                                                           ecosystem
+  Backend              Python + FastAPI                     Modular, async,
+                                                           best AI/ML
+                                                           ecosystem fit
 
   Database             PostgreSQL                          Relational,
                                                            reliable
 
-  ORM                  Prisma                              Type-safe database
-                                                           access
+  ORM                  SQLAlchemy                           Mature, flexible
+                                                           Python ORM
 
-  Cache                Redis                               Session & response
-                                                           caching
+  Migrations           Alembic                               Schema
+                                                           versioning for
+                                                           SQLAlchemy
 
-  Storage              S3-compatible storage               File uploads and
-                                                           reports
+  Auth                 JWT                                   Stateless,
+                                                           simple session
+                                                           handling
 
-  Auth                 JWT + OAuth                         Secure
-                                                           authentication
+  AI Providers         Anthropic Claude API, OpenAI API,     Multi-provider
+                       Google Gemini API                    AI orchestration
 
   OCR                  Tesseract / Vision API              Screenshot
                                                            debugging
 
-  Queue                BullMQ                              Background jobs
+  Storage              Supabase Storage                     File uploads and
+                                                           reports
 
   Container            Docker                              Reproducible
                                                            deployments
 
   CI/CD                GitHub Actions                      Automated testing
                                                            & deployment
+
+  Future — Cache        Redis                                 Deferred until
+                                                           needed at scale
+
+  Future — Queue         Celery                                Deferred until
+                                                           background job
+                                                           volume requires it
   ---------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
@@ -103,26 +123,28 @@ Responsibilities:
 
 Architecture:
 
--   Controller
+-   Route (API layer)
 -   Service
 -   Repository
--   DTO
+-   Schema (Pydantic)
 -   Validation
 
 ------------------------------------------------------------------------
 
 # AI Layer
 
+Supported providers:
+
+-   Anthropic Claude API
+-   OpenAI API
+-   Google Gemini API
+
 Responsibilities:
 
 -   Prompt construction
 -   Context management
--   Model abstraction
+-   Provider abstraction (switching providers should not require frontend or backend changes)
 -   Response normalization
-
-Design Goal:
-
-Changing the AI model should not require frontend or backend changes.
 
 ------------------------------------------------------------------------
 
@@ -155,9 +177,21 @@ Stores:
 
 # Coding Standards
 
+Frontend
+
 -   TypeScript strict mode
 -   ESLint
 -   Prettier
+
+Backend
+
+-   Black
+-   Ruff
+-   isort
+-   mypy
+
+Repository-wide
+
 -   Conventional Commits
 -   Semantic versioning
 

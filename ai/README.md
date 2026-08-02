@@ -7,10 +7,11 @@ The goal is to allow an AI software engineer to understand, implement, review, a
 ## Contents
 
 - `MASTER_BOOTSTRAP_PROMPT.md` — Initializes a new AI development session.
-- `SESSION_RECOVERY_PROMPT.md` — Resumes development after context loss.
-- `IMPLEMENTATION_PROMPT.md` — Guides implementation of a specific task.
-- `CODE_REVIEW_PROMPT.md` — Reviews completed implementations.
-- `BUG_FIX_PROMPT.md` — Diagnoses and fixes bugs.
-- `RELEASE_PROMPT.md` — Prepares the repository for release.
+
+This is currently the only prompt in this directory. Additional prompts
+(e.g. for session recovery, task implementation, code review, bug
+fixing, or release preparation) may be added here in the future — when
+added, they should be listed above at the same time so this README
+never references a file that doesn't exist.
 
 These prompts complement the project documentation. The repository remains the primary source of truth.

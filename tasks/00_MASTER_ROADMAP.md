@@ -444,7 +444,8 @@ Develop the core backend architecture including API server, routing, middleware,
 
 ## Major Components
 
-- Express server
+- FastAPI application
+- SQLAlchemy models + Alembic migrations
 - Database connection
 - Middleware
 - Configuration

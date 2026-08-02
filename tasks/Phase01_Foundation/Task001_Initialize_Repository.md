@@ -66,12 +66,14 @@ The following documents should already exist:
 # Expected Repository Structure
 
 ```text
-CodeSense-AI/
+codesense-ai/
 │
 ├── backend/
 ├── frontend/
 ├── docs/
 ├── tasks/
+├── ai/
+├── CLAUDE.md/
 ├── .gitignore
 ├── README.md
 ├── LICENSE
@@ -89,7 +91,7 @@ Verify the repository name.
 Expected:
 
 ```
-CodeSense-AI
+codesense-ai
 ```
 
 ---

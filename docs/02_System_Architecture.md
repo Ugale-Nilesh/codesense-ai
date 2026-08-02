@@ -31,13 +31,13 @@ Design principles:
 ``` text
                     +----------------------+
                     |      Web Client      |
-                    | React + Next.js      |
+                    | React + Vite + TS    |
                     +----------+-----------+
                                |
                                v
                     +----------------------+
                     |    Backend API       |
-                    | NestJS / FastAPI     |
+                    | Python + FastAPI     |
                     +----------+-----------+
                                |
          +---------------------+---------------------+
@@ -50,8 +50,10 @@ Design principles:
 
                                |
                                v
-                         PostgreSQL Database
+                    PostgreSQL (via SQLAlchemy)
 ```
+
+AI Engine orchestrates the configured providers (Anthropic Claude API, OpenAI API, Google Gemini API). File Service persists uploads to Supabase Storage.
 
 ------------------------------------------------------------------------
 

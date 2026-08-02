@@ -110,7 +110,7 @@ Future Tasks Depending on This
 # Target Repository Changes
 
 ```text
-CodeSense-AI/
+codesense-ai/
 
 backend/
 │

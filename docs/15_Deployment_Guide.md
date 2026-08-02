@@ -53,9 +53,12 @@ Examples:
 
 -   DATABASE_URL
 -   JWT_SECRET
--   AI_API_KEY
--   REDIS_URL
--   STORAGE_ENDPOINT
+-   ANTHROPIC_API_KEY
+-   OPENAI_API_KEY
+-   GOOGLE_API_KEY
+-   SUPABASE_URL
+-   SUPABASE_SERVICE_KEY
+-   REDIS_URL (future — required once Redis/Celery are adopted)
 
 Never commit secrets.
 
@@ -68,7 +71,7 @@ Containers:
 -   Frontend
 -   Backend
 -   PostgreSQL
--   Redis
+-   Redis (future — added when caching/Celery are introduced)
 
 Use Docker Compose for local development.
 
@@ -92,7 +95,7 @@ GitHub Actions:
 
 Rules:
 
--   Use Prisma migrations
+-   Use Alembic migrations
 -   Review every migration
 -   Backup production before applying changes
 

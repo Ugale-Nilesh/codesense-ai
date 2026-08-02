@@ -16,7 +16,8 @@ schema is designed to support modular growth while maintaining strong
 data integrity and high query performance.
 
 Primary database: **PostgreSQL**\
-ORM: **Prisma**
+ORM: **SQLAlchemy**\
+Migrations: **Alembic**
 
 ------------------------------------------------------------------------
 

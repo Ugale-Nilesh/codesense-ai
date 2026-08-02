@@ -2,202 +2,58 @@
 
 # CodeSense AI
 
-## Development Roadmap
+## Development Roadmap (Summary)
 
-**Version:** 1.0\
-**Status:** Master Execution Plan
-
-------------------------------------------------------------------------
-
-# Purpose
-
-This roadmap defines the complete execution strategy for building
-CodeSense AI.
-
-It serves as the single source of truth for development sequencing and
-milestone tracking.
+**Version:** 2.0\
+**Status:** Superseded — Summary Only
 
 ------------------------------------------------------------------------
 
-# Development Strategy
+# Notice
 
-The project follows a documentation-first workflow:
+This document previously contained a standalone, independently-numbered
+roadmap (Phase 0 – Phase 9) that duplicated and diverged from the
+project's single source of truth for implementation sequencing.
 
-1.  Define architecture
-2.  Break work into implementation tasks
-3.  Implement incrementally
-4.  Test continuously
-5.  Update documentation after every milestone
+That duplication has been removed. This document is now a high-level
+summary only.
 
-------------------------------------------------------------------------
+**The authoritative roadmap is:**
 
-# Phase 0 --- Foundation
+```
+tasks/00_MASTER_ROADMAP.md
+```
 
-## Objectives
-
--   Complete engineering documentation
--   Finalize repository structure
--   Prepare development environment
-
-### Deliverables
-
--   Documentation set
--   GitHub repository
--   Initial CI configuration
+All phase definitions, deliverables, dependencies, durations, and exit
+criteria live there. Do not maintain a second phase list here or
+anywhere else.
 
 ------------------------------------------------------------------------
 
-# Phase 1 --- Project Bootstrap
+# High-Level Summary
 
-## Objectives
+CodeSense AI is built through 20 sequential phases, grouped into five
+stages:
 
--   Initialize frontend
--   Initialize backend
--   Configure database
--   Configure authentication
+1. **Foundation** (Phase 01) — repository, tooling, environment
+2. **Core Platform** (Phases 02–08) — backend infrastructure, frontend
+   infrastructure, authentication, dashboard, project management, file
+   processing, GitHub integration
+3. **AI Modules** (Phases 09–13) — AI engine core, Debug, Optimize,
+   Review, Learn
+4. **Quality & Delivery** (Phases 14–17) — reports/analytics, testing,
+   performance, deployment
+5. **Polish & Release** (Phases 18–20) — UI/UX polish, exhibition
+   preparation, final release
 
-### Success Criteria
-
--   Application boots successfully
--   Database connection established
--   User authentication operational
-
-------------------------------------------------------------------------
-
-# Phase 2 --- Core Platform
-
-Build:
-
--   Dashboard
--   Project management
--   File uploads
--   GitHub integration
--   History
-
-------------------------------------------------------------------------
-
-# Phase 3 --- Debug Module
-
-Features
-
--   Error analysis
--   Root cause detection
--   AI-generated fixes
--   OCR debugging
--   ZIP analysis
-
-Milestone Complete When
-
--   End-to-end debugging workflow functions
-
-------------------------------------------------------------------------
-
-# Phase 4 --- Optimize Module
-
-Features
-
--   Complexity analysis
--   Refactoring suggestions
--   Performance recommendations
--   Code smell detection
-
-------------------------------------------------------------------------
-
-# Phase 5 --- Review Module
-
-Features
-
--   AI code review
--   Security review
--   Maintainability scoring
--   Project health report
-
-------------------------------------------------------------------------
-
-# Phase 6 --- Learn Module
-
-Features
-
--   AI explanations
--   ELI5 mode
--   Interactive learning
--   Interview preparation
-
-------------------------------------------------------------------------
-
-# Phase 7 --- Productivity
-
-Features
-
--   Monaco editor
--   Documentation generation
--   Commit messages
--   Exportable reports
-
-------------------------------------------------------------------------
-
-# Phase 8 --- Quality & Stabilization
-
-Activities
-
--   Bug fixing
--   Performance optimization
--   UI polish
--   Accessibility review
--   Security audit
-
-------------------------------------------------------------------------
-
-# Phase 9 --- Release
-
-Deliverables
-
--   MVP release
--   Documentation freeze
--   User testing
--   Demo preparation
-
-------------------------------------------------------------------------
-
-# Definition of Milestone Completion
-
-A milestone is complete only if:
-
--   Features implemented
--   Tests passing
--   Documentation updated
--   Acceptance criteria satisfied
--   Code reviewed
-
-------------------------------------------------------------------------
-
-# Risks
-
--   Scope creep
--   AI implementation drift
--   Incomplete documentation
--   Performance regressions
-
-Mitigation:
-
--   Follow documentation
--   Small atomic tasks
--   Continuous review
-
-------------------------------------------------------------------------
-
-# Success Metrics
-
--   Stable MVP
--   Modular architecture
--   Fast debugging workflow
--   Positive developer experience
--   Complete documentation
+For phase objectives, deliverables, dependencies, estimated duration,
+and exit criteria, see `tasks/00_MASTER_ROADMAP.md`.
 
 ------------------------------------------------------------------------
 
 # Related Documents
 
+-   tasks/00_MASTER_ROADMAP.md (authoritative)
 -   11_Current_State.md
 -   13_Feature_Specifications.md
 -   16_Claude_Workflow.md
@@ -206,6 +62,9 @@ Mitigation:
 
 # Revision History
 
-  Version   Date        Changes
-  --------- ----------- -----------------
-  1.0       July 2026   Initial roadmap
+  Version   Date          Changes
+  --------- ------------- --------------------------------------------
+  1.0       July 2026     Initial roadmap (independent phase list)
+  2.0       August 2026   Converted to summary; master roadmap in
+                           tasks/00_MASTER_ROADMAP.md is now the sole
+                           source of truth for implementation sequencing
