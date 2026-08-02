@@ -34,18 +34,19 @@ Establish a production-ready repository, documentation, development workflow, an
 - Task001 – Initialize Repository Structure: verified/completed (root .gitignore added)
 - Documentation reconciliation pass (August 2026): stack, folder structure, roadmap, and LICENSE unified — see "Documentation Reconciliation" section below
 - Task002 – Setup Development Environment: verified/completed on contributor's local machine (Windows). Python 3.13.11, pip 25.3, venv + conda available, Git 2.55.0, Node.js v24.18.1 LTS, npm 11.16.0, VS Code 1.131.0, all 6 required extensions installed (Python, Pylance, ESLint, Prettier, Tailwind CSS IntelliSense, GitLens).
+- Task003 – Backend Project Setup: complete. `.venv` created, fastapi/uvicorn/pydantic/python-dotenv installed and frozen to `requirements.txt`, full `app/` folder structure scaffolded (api, core, models, schemas, services, utils, middleware, dependencies), minimal FastAPI app with `/health` endpoint created, `.env.example` added, `backend/.gitignore` populated (was empty). Server verified running locally with Swagger UI and ReDoc both loading correctly.
 
 ---
 
 # Current Task
 
-Task002 – Setup Development Environment (complete)
+Task003 – Backend Project Setup (complete)
 
 ---
 
 # Next Task
 
-Task003 – Backend Project Setup (not started; awaiting explicit instruction to proceed)
+Task004 – Frontend Project Setup (not started; awaiting explicit instruction to proceed)
 
 ---
 
