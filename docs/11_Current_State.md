@@ -32,18 +32,20 @@ Establish a production-ready repository, documentation, development workflow, an
 - Backend structure planned
 - Frontend structure planned
 - Task001 – Initialize Repository Structure: verified/completed (root .gitignore added)
+- Documentation reconciliation pass (August 2026): stack, folder structure, roadmap, and LICENSE unified — see "Documentation Reconciliation" section below
+- Task002 – Setup Development Environment: verified/completed on contributor's local machine (Windows). Python 3.13.11, pip 25.3, venv + conda available, Git 2.55.0, Node.js v24.18.1 LTS, npm 11.16.0, VS Code 1.131.0, all 6 required extensions installed (Python, Pylance, ESLint, Prettier, Tailwind CSS IntelliSense, GitLens).
 
 ---
 
 # Current Task
 
-Task001 – Initialize Repository Structure (complete)
+Task002 – Setup Development Environment (complete)
 
 ---
 
 # Next Task
 
-Task002 – Setup Development Environment (not started; awaiting explicit instruction to proceed)
+Task003 – Backend Project Setup (not started; awaiting explicit instruction to proceed)
 
 ---
 
