@@ -35,24 +35,31 @@ Establish a production-ready repository, documentation, development workflow, an
 - Documentation reconciliation pass (August 2026): stack, folder structure, roadmap, and LICENSE unified — see "Documentation Reconciliation" section below
 - Task002 – Setup Development Environment: verified/completed on contributor's local machine (Windows). Python 3.13.11, pip 25.3, venv + conda available, Git 2.55.0, Node.js v24.18.1 LTS, npm 11.16.0, VS Code 1.131.0, all 6 required extensions installed (Python, Pylance, ESLint, Prettier, Tailwind CSS IntelliSense, GitLens).
 - Task003 – Backend Project Setup: complete. `.venv` created, fastapi/uvicorn/pydantic/python-dotenv installed and frozen to `requirements.txt`, full `app/` folder structure scaffolded (api, core, models, schemas, services, utils, middleware, dependencies), minimal FastAPI app with `/health` endpoint created, `.env.example` added, `backend/.gitignore` populated (was empty). Server verified running locally with Swagger UI and ReDoc both loading correctly.
+- Task004 – Frontend Project Setup: complete. React + Vite + TypeScript project scaffolded via `npm create vite@latest . -- --template react-ts` (ESLint chosen as linter). Installed react-router-dom, axios, lucide-react, plus @tanstack/react-query and zustand (per finalized stack, ahead of Task004's original list). Tailwind CSS v4 configured via `@tailwindcss/vite` plugin + `@import "tailwindcss"` in `index.css`, verified working with a live rendering test (not just installed). Full `src/` folder structure scaffolded (assets, components, features, hooks, layouts, pages, routes, services, styles, utils). `.env.example` added. Dev server verified running at localhost:5173.
 
 ---
 
 # Current Task
 
-Task003 – Backend Project Setup (complete)
+Task004 – Frontend Project Setup (complete)
 
 ---
 
 # Next Task
 
-Task004 – Frontend Project Setup (not started; awaiting explicit instruction to proceed)
+Task005 – Configure Code Quality Tooling (not started; awaiting explicit instruction to proceed)
 
 ---
 
 # Blockers
 
 None.
+
+---
+
+# Tracked Accepted Risks
+
+- **GHSA-qwww-vcr4-c8h2** (React Router: RSC Mode CSRF Bypass, high severity per npm audit, affects `react-router` >=7.12.0 <8.3.0). Current install: `react-router-dom@7.18.2` (latest published v7 release) — falls inside the affected range. **Not upgraded to v8.3.0** because that is a major version bump with breaking changes, and this project has not yet reached the point of implementing routing (Task004 scope is scaffolding only). **Accepted as non-exploitable**: the advisory explicitly states it only affects applications using React Router's unstable RSC (React Server Components) APIs. CodeSense AI's frontend is a plain Vite SPA — client-side rendered only, no SSR, no RSC usage planned per `docs/03_Technology_Stack.md`. Revisit if/when a v8 migration is separately planned, or if RSC usage is ever introduced (it should not be, per the finalized stack).
 
 ---
 
