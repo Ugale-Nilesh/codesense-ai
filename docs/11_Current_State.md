@@ -36,18 +36,19 @@ Establish a production-ready repository, documentation, development workflow, an
 - Task002 – Setup Development Environment: verified/completed on contributor's local machine (Windows). Python 3.13.11, pip 25.3, venv + conda available, Git 2.55.0, Node.js v24.18.1 LTS, npm 11.16.0, VS Code 1.131.0, all 6 required extensions installed (Python, Pylance, ESLint, Prettier, Tailwind CSS IntelliSense, GitLens).
 - Task003 – Backend Project Setup: complete. `.venv` created, fastapi/uvicorn/pydantic/python-dotenv installed and frozen to `requirements.txt`, full `app/` folder structure scaffolded (api, core, models, schemas, services, utils, middleware, dependencies), minimal FastAPI app with `/health` endpoint created, `.env.example` added, `backend/.gitignore` populated (was empty). Server verified running locally with Swagger UI and ReDoc both loading correctly.
 - Task004 – Frontend Project Setup: complete. React + Vite + TypeScript project scaffolded via `npm create vite@latest . -- --template react-ts` (ESLint chosen as linter). Installed react-router-dom, axios, lucide-react, plus @tanstack/react-query and zustand (per finalized stack, ahead of Task004's original list). Tailwind CSS v4 configured via `@tailwindcss/vite` plugin + `@import "tailwindcss"` in `index.css`, verified working with a live rendering test (not just installed). Full `src/` folder structure scaffolded (assets, components, features, hooks, layouts, pages, routes, services, styles, utils). `.env.example` added. Dev server verified running at localhost:5173.
+- Task005 – Configure Code Quality Tooling: complete. Backend: black, ruff, isort, mypy, pre-commit installed; `backend/pyproject.toml` created with all four tool configs (line-length 88, py312 target). Frontend: prettier, eslint-config-prettier installed (eslint-plugin-react-hooks/react-refresh already present from Task004); `eslint.config.js` extended with Prettier integration (flat config format — Task005's original `.eslintrc.cjs` instruction is obsolete for ESLint 10.8.0, which only reads flat config); `.prettierrc`/`.prettierignore` created; `format` npm script added (missing from Vite's default scaffold). Root `.vscode/settings.json` and `.vscode/extensions.json` created (format-on-save, ESLint/import auto-fix per-language formatters); added `charliermarsh.ruff` and `ms-python.black-formatter` VS Code extensions (in Task005's recommended list but not Task002's, since Task002 predated these tools). Root `.pre-commit-config.yaml` created (black, ruff --fix, trailing-whitespace, end-of-file-fixer, check-yaml, check-added-large-files) and hook installed at `.git/hooks/pre-commit`. All verification commands passed: `black --check .`, `ruff check .`, `mypy app --ignore-missing-imports`, `npm run lint`, `npm run format` — dev server confirmed still running cleanly after formatting.
 
 ---
 
 # Current Task
 
-Task004 – Frontend Project Setup (complete)
+Task005 – Configure Code Quality Tooling (complete)
 
 ---
 
 # Next Task
 
-Task005 – Configure Code Quality Tooling (not started; awaiting explicit instruction to proceed)
+Task006 – Environment Configuration (not started; awaiting explicit instruction to proceed)
 
 ---
 
