@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 app = FastAPI(
-    title="CodeSense AI",
+    title=settings.APP_NAME,
     description="AI-powered developer assistant backend",
-    version="0.1.0",
+    version=settings.APP_VERSION,
 )
 
 
 @app.get("/health")
 def health_check() -> dict[str, str]:
     """Basic liveness check - confirms the API is running."""
-    return {"status": "ok"}
+    return {"status": "ok", "environment": settings.ENVIRONMENT}
