@@ -131,7 +131,7 @@ The objectives defined for this phase were:
 | Task006 – Environment Configuration | ✅ Completed |
 | Task007 – Shared Utilities | ✅ Completed |
 | Task008 – Project Verification | ✅ Completed |
-| Task009 – Phase Completion Review | ⏳ In Progress |
+| Task009 – Phase Completion Review | ✅ Completed |
 
 ---
 
@@ -152,82 +152,80 @@ The objectives defined for this phase were:
 
 ## Repository
 
-- [ ] Repository structure verified
-- [ ] Git history organized
-- [ ] Folder hierarchy complete
+- [x] Repository structure verified
+- [x] Git history organized
+- [x] Folder hierarchy complete
 
 ---
 
 ## Backend
 
-- [ ] FastAPI operational
-- [ ] Dependencies verified
-- [ ] Configuration validated
+- [x] FastAPI operational
+- [x] Dependencies verified
+- [x] Configuration validated
 
 ---
 
 ## Frontend
 
-- [ ] React operational
-- [ ] TypeScript operational
-- [ ] Tailwind operational
+- [x] React operational
+- [x] TypeScript operational
+- [x] Tailwind operational
 
 ---
 
 ## Tooling
 
-- [ ] Formatting operational
-- [ ] Linting operational
-- [ ] Static analysis operational
-- [ ] Git hooks operational
+- [x] Formatting operational
+- [x] Linting operational
+- [x] Static analysis operational
+- [x] Git hooks operational
 
 ---
 
 ## Documentation
 
-- [ ] Documentation synchronized
-- [ ] Roadmap updated
-- [ ] Tasks documented
+- [x] Documentation synchronized
+- [x] Roadmap updated
+- [x] Tasks documented
 
 ---
 
 # Lessons Learned
 
-Document any observations from Phase 01.
+**Documentation had to be reconciled before implementation could safely begin.** Prior to Task001, the repository contained genuine architecture conflicts across documents — a NestJS/Prisma/Next.js stack described in `docs/02-05`, alongside a Python/FastAPI/Vite stack described in `CLAUDE_10_Frontend_Standards.md` and the Phase01 task specs themselves. A dedicated reconciliation pass (backend/frontend stack, folder structure, two competing roadmaps collapsed into one, LICENSE, repo naming) was required before Task001 could proceed without risk of building against contradictory specs.
 
-Suggested topics:
+**Tooling moves faster than task documentation.** Several Phase01 task docs specified tooling details that had already become outdated by the time of implementation:
+- ESLint 10.x (installed by Task004's Vite scaffold) reads flat config (`eslint.config.js`) exclusively; Task005's original instruction to create `.eslintrc.cjs` would have produced a file ESLint silently ignores.
+- The current Vite CLI (`npm create vite@latest`) added interactive prompts (linter choice, "install and start now?") not present when Task004 was originally written.
 
-- Setup challenges encountered.
-- Tooling decisions.
-- Configuration improvements.
-- Documentation updates.
-- Architecture refinements.
+**Dependency security advisories require verification, not blind action.** `react-router-dom`'s entire 7.x line carries an unpatched CSRF advisory (GHSA-qwww-vcr4-c8h2) as of this phase; the fix requires a major-version bump to 8.3.0. Investigation showed the advisory only applies to apps using React Router's unstable RSC APIs — which this SPA does not and will not use. Documented as an accepted, tracked risk rather than forcing an early, unplanned major-version migration. (A first attempt to "fix" this by downgrading actually introduced 14 additional CVEs from an older vulnerable range — reinforcing that dependency fixes need verification against the actual advisory data, not just following the first suggested command.)
+
+**A structural gap survived three earlier tasks undetected.** `backend/app/__init__.py` was never created during Task003. `uvicorn` runs fine without it, so this went unnoticed through Tasks003-007. `mypy` requires it, and failed with an ambiguous "source file found twice" error the first time it was run in Task008 — exactly the kind of issue a dedicated verification task exists to catch before it compounds further into Phase 02.
 
 ---
 
 # Technical Debt
-
-Record any items intentionally postponed.
-
-Example:
 
 | Item | Reason | Planned Phase |
 |------|--------|---------------|
 | Docker setup | Deferred to infrastructure | Phase 17 |
 | CI/CD pipeline | Deferred until testing | Phase 15 |
 | Monitoring | Deferred until deployment | Phase 17 |
+| react-router-dom v8 migration | v7.x carries an unpatched CSRF advisory (GHSA-qwww-vcr4-c8h2); accepted as non-exploitable since this SPA does not use React Router's unstable RSC APIs. v8 is a breaking major-version change not yet scoped. | Revisit before any RSC/SSR adoption, or opportunistically during Phase 02+ |
+| Redis / Celery | Explicitly scoped as "Future" in the finalized technology stack; no caching or background-job volume yet exists to justify them | Deferred until needed at scale |
+| `docs/09_Coding_Standards.md` Backend Standards terminology | Corrected from NestJS-flavored `controller/dto` to FastAPI's `api/schema` during Task003 prep; worth a broader pass to confirm no other doc has similar leftover terminology | Opportunistic |
 
 ---
 
 # Risks Before Phase 02
 
-Evaluate any remaining risks.
-
 | Risk | Status | Action |
 |------|--------|--------|
-| Repository instability | Low | Continue development |
-| Missing documentation | Low | Update as needed |
-| Dependency conflicts | Low | Monitor during implementation |
+| Repository instability | Low | Verified stable across 8 completed tasks; Task008 caught and fixed the one structural gap found (`app/__init__.py`) |
+| Missing documentation | Low | All required docs/ and tasks/ files confirmed present in Task008 |
+| Dependency conflicts | Low | `react-router-dom` CSRF advisory tracked as accepted risk (see Technical Debt); no other conflicts found |
+| Recurrence of stale task documentation | Low-Medium | Task005 and Task009 both required correcting instructions that had gone stale relative to actual tool versions; worth staying alert to this pattern in Phase 02 |
 
 ---
 
@@ -248,18 +246,18 @@ The project is considered ready for Phase 02 if:
 
 ## Technical Lead
 
-- [ ] Repository approved
-- [ ] Documentation approved
-- [ ] Tooling approved
-- [ ] Environment approved
+- [x] Repository approved
+- [x] Documentation approved
+- [x] Tooling approved
+- [x] Environment approved
 
 ---
 
 ## Development Readiness
 
-- [ ] Ready for Backend Infrastructure
-- [ ] Ready for API Development
-- [ ] Ready for Database Integration
+- [x] Ready for Backend Infrastructure
+- [x] Ready for API Development
+- [x] Ready for Database Integration
 
 ---
 

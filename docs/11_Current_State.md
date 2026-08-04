@@ -41,6 +41,7 @@ Establish a production-ready repository, documentation, development workflow, an
 - Task006 – Environment Configuration: complete. Backend `.env.example` expanded to full variable set (app metadata, database, security, AI providers x3, GitHub, logging). Frontend `.env.example` expanded (app name, API base URL, environment, feature flag). `backend/app/core/config.py` created — centralized `Settings` class using python-dotenv, with defaults for non-secret app config and `None` defaults for unused secrets (DB/auth/AI keys aren't consumed by any code yet, so hard-validation was deferred rather than breaking startup). `backend/app/main.py` wired to use `settings.APP_NAME`/`APP_VERSION`, and `/health` now returns `environment` from settings — verified live via browser. `frontend/.gitignore` explicitly updated with `.env` (previously relied only on the root `.gitignore` pattern). Both `backend/.env` and `frontend/.env` created from templates and confirmed absent from `git status`. Frontend env variable access verified live via `import.meta.env.VITE_API_BASE_URL` rendered on page (reading it in the browser console directly fails due to a browser-console module-scope limitation, unrelated to the app).
 - Task007 – Shared Utilities: complete. Backend `app/utils/` — `constants.py` (API version, file extensions, upload limits, pagination), `logger.py` (centralized `get_logger()` reading `settings.LOG_LEVEL`), `validators.py` (email/username/UUID/file-extension checks), `exceptions.py` (`AppError` base + 6 typed exceptions with `status_code`/`code` matching `docs/06_API_Contracts.md`'s error shape exactly), `helpers.py` (`success_response`/`error_response` builders + `chunk_list`), `file_utils.py` (safe filenames, extension extraction, human-readable size), `time_utils.py` (UTC timestamps, duration formatting), `__init__.py` (re-exports). All imports and function outputs smoke-tested directly (`is_valid_email`, `format_file_size`, `utc_now_iso` all confirmed working). Frontend `src/utils/` — `constants.ts`, `validators.ts`, `formatters.ts`, `helpers.ts`, `api.ts` (uses `axios.isAxiosError` type guard, no `any` per coding standards), `index.ts` (barrel export). Verified via `npm run lint` (clean) and full `npm run build` (`tsc -b && vite build` succeeded). Backend confirmed still starts cleanly after the new package was added to the import chain.
 - Task008 – Project Verification: complete. Full cross-cutting verification of Phase01 (Tasks001-007) performed. See Verification Report below. One real gap found and fixed: `backend/app/__init__.py` was missing since Task003 — uvicorn tolerated it, but mypy could not, failing with "Source file found twice under different module names" (`utils.exceptions` vs `app.utils.exceptions`). Added the missing `__init__.py`; mypy now passes cleanly (11 source files, no issues).
+- Task009 – Phase 01 Completion Review: complete. All checklists in `tasks/Phase01_Foundation/Task009_Phase01_Completion.md` checked off; Lessons Learned, Technical Debt, and Risks Before Phase 02 sections filled in with genuine observations from this phase (documentation reconciliation required before Task001, stale tooling instructions in Task005/Task009, the react-router CSRF advisory investigation, and the app/__init__.py gap caught in Task008). Formal sign-off checklist completed. **Phase 01 – Foundation is officially closed.**
 
 ---
 
@@ -57,19 +58,23 @@ Establish a production-ready repository, documentation, development workflow, an
 | Documentation | ✅ Pass | All required docs/ and tasks/ files present |
 | Utilities | ✅ Pass | All Task007 utilities import and execute correctly (re-verified this session) |
 
-**Verdict: Phase 01 may proceed to Phase 02 – Backend Infrastructure. No blocking issues remain.**
+---
+
+# 🏁 Phase 01 – Foundation: Complete
+
+9/9 tasks completed. 0 blocking issues. Ready for Phase 02 – Backend Infrastructure.
 
 ---
 
 # Current Task
 
-Task008 – Project Verification (complete). **Phase 01 – Foundation is functionally complete**, pending formal closure via Task009.
+None — between phases.
 
 ---
 
 # Next Task
 
-Task009 – Phase 01 Completion Review (not started; awaiting explicit instruction to proceed)
+Phase 02 begins with backend infrastructure work (API architecture, database integration, authentication foundation, middleware, dependency injection, core services), per `tasks/00_MASTER_ROADMAP.md`. Not started; awaiting explicit instruction to proceed.
 
 ---
 
