@@ -1,163 +1,85 @@
-# DECISIONS.md
+# ADR-002 — Database Selection
 
-## Phase 02 -- Backend Infrastructure
+**Status:** Accepted
 
-**Version:** 1.0\
-**Status:** Approved
+**Date:** 2026-08-04
 
-------------------------------------------------------------------------
+## Context
 
-# Purpose
-
-This document records the architectural decisions for Phase 02. These
-decisions are mandatory unless superseded by a future ADR.
-
-------------------------------------------------------------------------
-
-# ADR-001 --- FastAPI
+CodeSense AI requires a relational database capable of supporting transactional workloads, structured relationships, JSON data, future scalability, and consistent behavior across all environments. The project also uses SQLAlchemy and Alembic for ORM and database migrations, which benefit from running against the same database engine throughout the development lifecycle.
 
 ## Decision
 
-Use FastAPI as the backend framework.
+CodeSense AI SHALL use **PostgreSQL** as the primary and only relational database for all environments.
+
+This includes:
+
+- Development
+- Testing
+- Staging
+- Production
+
+All developers SHALL run PostgreSQL locally during development.
+
+The application, migrations, tests, and deployment environments SHALL target PostgreSQL to ensure behavioral consistency and eliminate environment-specific differences.
 
 ## Rationale
 
--   Excellent async support
--   Automatic OpenAPI generation
--   Strong typing with Pydantic
--   Large ecosystem
--   Ideal for AI-first APIs
+PostgreSQL was selected because it provides:
+
+- Excellent compatibility with SQLAlchemy and Alembic
+- Strong ACID compliance
+- Advanced indexing capabilities
+- Native JSON/JSONB support
+- High scalability for future growth
+- Consistent behavior across local and production environments
+- Mature ecosystem and community support
+
+Using PostgreSQL in every environment eliminates discrepancies between development and production, reduces migration issues, and simplifies long-term maintenance.
+
+## Rejected Alternatives
+
+### SQLite (including development-only usage)
+
+Rejected because:
+
+- Different SQL dialect and behavior from PostgreSQL
+- Limited concurrency support
+- Missing PostgreSQL-specific features
+- Increased risk of environment-specific bugs
+- Does not accurately represent the production environment
+
+### MySQL
+
+Rejected because:
+
+- Inferior JSON capabilities for project requirements
+- Less aligned with planned PostgreSQL-specific features
+- No architectural advantage for CodeSense AI
+
+### MongoDB
+
+Rejected because:
+
+- The project requires a relational data model
+- SQLAlchemy and Alembic are part of the selected architecture
+- Document storage does not match the application's core data model
 
 ## Consequences
 
--   ASGI deployment
--   Dependency Injection available
--   Automatic Swagger/ReDoc
+Positive:
 
-------------------------------------------------------------------------
+- Identical database behavior across all environments
+- Simpler migration workflow
+- Easier debugging
+- Consistent developer experience
+- Better production reliability
 
-# ADR-002 --- PostgreSQL
+Negative:
 
-## Decision
+- PostgreSQL must be installed locally by every developer
+- Slightly higher initial setup effort compared to SQLite
 
-PostgreSQL is the primary relational database.
+## Review
 
-## Rationale
-
--   ACID compliance
--   Mature ecosystem
--   JSONB support
--   Excellent SQL features
--   Future scalability
-
-## Rejected
-
--   SQLite (development only)
--   MySQL
--   MongoDB
-
-------------------------------------------------------------------------
-
-# ADR-003 --- SQLAlchemy 2.x
-
-## Decision
-
-Use SQLAlchemy 2.x as the ORM.
-
-## Rationale
-
--   Mature ORM
--   Excellent migration support
--   Fine-grained control
--   Strong community adoption
-
-Alembic will manage migrations.
-
-------------------------------------------------------------------------
-
-# ADR-004 --- Repository Pattern
-
-## Decision
-
-All persistence belongs in repositories.
-
-## Rules
-
--   Services never write SQL.
--   Routers never access the database.
--   Repositories contain persistence only.
-
-------------------------------------------------------------------------
-
-# ADR-005 --- Dependency Injection
-
-## Decision
-
-Use FastAPI dependency injection.
-
-Inject only: - Database session - Settings - Authenticated user - Logger
-
-Never instantiate these directly inside services.
-
-------------------------------------------------------------------------
-
-# ADR-006 --- JWT Authentication
-
-## Decision
-
-Stateless JWT authentication.
-
-Reason: - Scalable - API-first - Works well with SPA frontend
-
-Session-based authentication is rejected.
-
-------------------------------------------------------------------------
-
-# ADR-007 --- Configuration
-
-Configuration must come from:
-
--   Environment variables
--   Pydantic Settings
-
-Never hardcode secrets.
-
-------------------------------------------------------------------------
-
-# ADR-008 --- Logging
-
-Use structured application logging.
-
-Requirements: - Request IDs - Error stack traces - No credential logging
-
-------------------------------------------------------------------------
-
-# ADR-009 --- API Versioning
-
-Expose APIs under:
-
-/api/v1/
-
-Future breaking changes must use:
-
-/api/v2/
-
-------------------------------------------------------------------------
-
-# ADR-010 --- Future AI Integration
-
-Business logic must remain independent from AI providers.
-
-Future providers (OpenAI, Anthropic, Gemini) will integrate through an
-abstraction layer rather than directly inside services.
-
-------------------------------------------------------------------------
-
-# Review Policy
-
-Every future architectural change must either:
-
-1.  Update an existing ADR, or
-2.  Introduce a new ADR.
-
-No implementation may silently violate these decisions.
+This decision SHALL remain valid unless superseded by a future Architecture Decision Record (ADR).
