@@ -26,7 +26,7 @@ A task may only be marked complete after:
   Task   Description                  Status   Verified  Commit
   ------ --------------------------- -------- ---------- --------
   001    Database Setup                 ✅        ✅
-  002    SQLAlchemy Configuration       ⬜        ⬜
+  002    SQLAlchemy Configuration       ✅        ✅
   003    Alembic Migrations             ⬜        ⬜
   004    Base Models                    ⬜        ⬜
   005    Application Configuration      ⬜        ⬜

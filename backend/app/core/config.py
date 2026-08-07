@@ -1,4 +1,4 @@
-import os
+﻿import os
 
 from dotenv import load_dotenv
 
@@ -18,6 +18,10 @@ class Settings:
 
     # Database
     DATABASE_URL: str | None = os.getenv("DATABASE_URL") or None
+    DB_POOL_SIZE: int = int(os.getenv("DB_POOL_SIZE", "5"))
+    DB_MAX_OVERFLOW: int = int(os.getenv("DB_MAX_OVERFLOW", "10"))
+    DB_POOL_RECYCLE_SECONDS: int = int(os.getenv("DB_POOL_RECYCLE_SECONDS", "1800"))
+    DB_ECHO: bool = os.getenv("DB_ECHO", "False").lower() == "true"
 
     # Security
     SECRET_KEY: str | None = os.getenv("SECRET_KEY") or None

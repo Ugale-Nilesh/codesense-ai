@@ -46,6 +46,7 @@ Establish a production-ready repository, documentation, development workflow, an
 ## Phase 02 — Backend Infrastructure
 
 - Task001 – Database Setup: complete. Installed SQLAlchemy 2.0.51, psycopg 3.3.4 (psycopg3, `postgresql+psycopg://` driver string — not psycopg2), Alembic 1.19.0 (install only, no migrations yet), pydantic-settings 2.14.2 (installed per task spec; actual `BaseSettings` migration deferred to Task005 per that task's explicit dependency chain — flagged and confirmed before implementation). Created local PostgreSQL 18.4 database `codesense_ai` via `createdb`. Created `app/db/` package: `database.py` (single reusable `Engine`, `pool_pre_ping=True`), `session.py` (`SessionLocal` sessionmaker + `get_db()` generator dependency with guaranteed session close), `base.py` (empty `DeclarativeBase` — no models per scope), `__init__.py` (re-exports). `app/core/config.py` already had `DATABASE_URL` wired from Task006 (Phase01) — no changes needed there. Verified with a live query (`SELECT version()` round-tripped successfully against the real database, not just an import check), full `db` package import test, `black`/`ruff`/`mypy` all clean, and `uvicorn app.main:app --reload` starts without errors. Noted for Task002: Task001 deliberately kept the engine/session config minimal (FR-2/FR-3/FR-4 satisfied at a basic level) since Task002 owns the hardened version (connection pooling, full session lifecycle) — avoided duplicate/conflicting work.
+- Task002 – SQLAlchemy Configuration: complete. Hardened the `app/db/database.py` engine from Task001 with configurable connection pooling — added `DB_POOL_SIZE` (default 5), `DB_MAX_OVERFLOW` (default 10), `DB_POOL_RECYCLE_SECONDS` (default 1800, avoids cloud-provider idle-connection drops), and `DB_ECHO` (default False, SQL statement logging for local debugging only) to `app/core/config.py` and `.env.example`. Wired structured logging via the existing `app/utils/logger.py` `get_logger()` utility — logs engine creation (`environment=` only) and connection success/failure, never the URL or password (masked as `***` in engine repr by SQLAlchemy itself). Added a fail-fast live connection check (`SELECT 1`) at import time so the app errors loudly on startup if Postgres is unreachable, rather than starting silently broken. Created `app/models/__init__.py` (empty package, no models per scope — models arrive in Task004). `session.py` and `base.py` needed no changes — Task001's versions already satisfied FR-002/FR-003. Verified: live connection + logging confirmed via `python -c "import app.main; from app.db import engine"` (both log lines fired), `black`/`ruff`/`mypy` clean across all touched files, `uvicorn app.main:app --reload` starts/stops cleanly, Swagger UI loads at `/docs` (`CodeSense AI 0.1.0`, OAS 3.1, existing `/health` endpoint from Phase01 visible). Noted limitation: the engine/connection log lines don't yet fire during a real `uvicorn` boot because `app/main.py` doesn't import `app.db` anywhere — that wiring is explicitly Task006 (Dependency Injection)'s responsibility; verification was done via direct import instead to stay within Task002's scope boundary.
 
 ---
 
@@ -72,13 +73,13 @@ Establish a production-ready repository, documentation, development workflow, an
 
 # Current Task
 
-None — Task001 (Database Setup) just completed.
+None — Task002 (SQLAlchemy Configuration) just completed.
 
 ---
 
 # Next Task
 
-Phase 02 Task002 – SQLAlchemy Configuration (`tasks/Phase02_Backend_Infrastructure/Task002_SQLAlchemy_Configuration.md`). Not started; awaiting explicit instruction to proceed.
+Phase 02 Task003 – Alembic Migrations (`tasks/Phase02_Backend_Infrastructure/Task003_Alembic_Migrations.md`). Not started; awaiting explicit instruction to proceed.
 
 ---
 
