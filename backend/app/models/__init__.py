@@ -1,5 +1,10 @@
 ﻿"""Database model package.
 
-Application-specific SQLAlchemy models will be added in later tasks.
-This package intentionally contains no models yet.
+Provides the shared BaseModel that all future application models
+will inherit from. Application-specific models arrive in Task005
+onward.
 """
+
+from app.models.base_model import BaseModel
+
+__all__ = ["BaseModel"]
